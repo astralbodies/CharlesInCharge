@@ -12,6 +12,15 @@ import Messages
 class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewController {
     var stickers = [MSSticker]()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let charlesInChargeService = CharlesInChargeService()
+        charlesInChargeService.findAndDownloadImages { (searchResults) in
+            print(searchResults)
+        }
+    }
+
     override func numberOfStickers(in stickerBrowserView: MSStickerBrowserView) -> Int {
         return stickers.count
     }

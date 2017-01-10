@@ -12,7 +12,7 @@ import UIKit
 
 class ImageDownloadService {
     let destination: DownloadRequest.DownloadFileDestination = { url, response in
-        let documentsURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
         let fileExtension: String = {
             guard let mimeType = response.mimeType else {
@@ -35,15 +35,20 @@ class ImageDownloadService {
         return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
     }
 
-    func download(imageUrl url: URL, completion: (_ filename: String?) -> Void) {
+    func download(imageUrl url: URL, completion: @escaping (_ filename: String?) -> Void) {
         Alamofire.download(url, to: destination)
             .validate()
-            .response { response in
+            .responseData { response in
+                debugPrint("Downloaded image")
                 print(response)
 
-                if response.error == nil, let imagePath = response.destinationURL?.path {
+                if response.result.error == nil, let imagePath = response.destinationURL?.path {
                     let image = UIImage(contentsOfFile: imagePath)
+                    completion(imagePath)
+                    return
                 }
+
+                completion(nil)
         }
     }
 }

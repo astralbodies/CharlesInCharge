@@ -10,10 +10,18 @@ import UIKit
 import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
+    var stickerBrowserViewController: CharlesInChargeStickerBrowserViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        stickerBrowserViewController = CharlesInChargeStickerBrowserViewController(stickerSize: .small)
+        stickerBrowserViewController.view.frame = self.view.frame
+
+        addChildViewController(stickerBrowserViewController)
+        stickerBrowserViewController.didMove(toParentViewController: self)
+        view.addSubview(stickerBrowserViewController.view)
     }
     
     override func didReceiveMemoryWarning() {

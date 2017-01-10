@@ -42,6 +42,8 @@ final class BingImageSearchService {
                     title: title)
             })
 
+            print("Bing search result count: \(searchResults.count)")
+
             completion(searchResults)
         }
     }

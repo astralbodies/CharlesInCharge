@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		936F0E971E246C17006C24C0 /* CharlesInChargeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936F0E961E246C17006C24C0 /* CharlesInChargeService.swift */; };
 		93B47E191E229F1100F4EBE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B47E181E229F1100F4EBE1 /* Assets.xcassets */; };
 		93B47E201E229F1100F4EBE1 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 93B47E1F1E229F1100F4EBE1 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93B47E251E229F1100F4EBE1 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B47E241E229F1100F4EBE1 /* Messages.framework */; };
 		93B47E281E229F1100F4EBE1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B47E271E229F1100F4EBE1 /* MessagesViewController.swift */; };
 		93B47E2B1E229F1100F4EBE1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B47E291E229F1100F4EBE1 /* MainInterface.storyboard */; };
 		93B47E2D1E229F1100F4EBE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B47E2C1E229F1100F4EBE1 /* Assets.xcassets */; };
-		93B47E391E22A18600F4EBE1 /* CharlesInChargeStickerBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserVC.swift */; };
+		93B47E391E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift */; };
 		93B47E3B1E22A2A800F4EBE1 /* BingImageSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B47E3A1E22A2A800F4EBE1 /* BingImageSearchService.swift */; };
 		93B47E551E22A3CB00F4EBE1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B47E481E22A33400F4EBE1 /* Alamofire.framework */; };
 		93B47E571E22AB7E00F4EBE1 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B47E561E22AB7E00F4EBE1 /* ImageDownloadService.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		936F0E961E246C17006C24C0 /* CharlesInChargeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharlesInChargeService.swift; sourceTree = "<group>"; };
 		93B47E151E229F1100F4EBE1 /* CharlesInCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharlesInCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B47E181E229F1100F4EBE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B47E1A1E229F1100F4EBE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +104,7 @@
 		93B47E2A1E229F1100F4EBE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		93B47E2C1E229F1100F4EBE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93B47E2E1E229F1100F4EBE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharlesInChargeStickerBrowserVC.swift; sourceTree = "<group>"; };
+		93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharlesInChargeStickerBrowserViewController.swift; sourceTree = "<group>"; };
 		93B47E3A1E22A2A800F4EBE1 /* BingImageSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BingImageSearchService.swift; sourceTree = "<group>"; };
 		93B47E3C1E22A33400F4EBE1 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		93B47E561E22AB7E00F4EBE1 /* ImageDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
@@ -165,9 +167,10 @@
 				93B47E291E229F1100F4EBE1 /* MainInterface.storyboard */,
 				93B47E2C1E229F1100F4EBE1 /* Assets.xcassets */,
 				93B47E2E1E229F1100F4EBE1 /* Info.plist */,
-				93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserVC.swift */,
+				93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift */,
 				93B47E3A1E22A2A800F4EBE1 /* BingImageSearchService.swift */,
 				93B47E561E22AB7E00F4EBE1 /* ImageDownloadService.swift */,
+				936F0E961E246C17006C24C0 /* CharlesInChargeService.swift */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
@@ -345,9 +348,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936F0E971E246C17006C24C0 /* CharlesInChargeService.swift in Sources */,
 				93B47E281E229F1100F4EBE1 /* MessagesViewController.swift in Sources */,
 				93B47E571E22AB7E00F4EBE1 /* ImageDownloadService.swift in Sources */,
-				93B47E391E22A18600F4EBE1 /* CharlesInChargeStickerBrowserVC.swift in Sources */,
+				93B47E391E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift in Sources */,
 				93B47E3B1E22A2A800F4EBE1 /* BingImageSearchService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +540,7 @@
 				93B47E331E229F1100F4EBE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93B47E351E229F1100F4EBE1 /* Build configuration list for PBXNativeTarget "CharlesInCharge" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +549,7 @@
 				93B47E371E229F1100F4EBE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
