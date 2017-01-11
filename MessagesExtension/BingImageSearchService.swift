@@ -55,8 +55,8 @@ final class BingImageSearchService {
         let title: String
 
         struct ThumbnailSize {
-            public var width: Float
-            public var height: Float
+            public let width: Float
+            public let height: Float
         }
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 class CharlesInChargeService {
-    func findAndDownloadImages(completion: @escaping ([BingImageSearchService.SearchResult]) -> Void) {
+    func findAndDownloadImages(completion: @escaping ([CharlesImageResult]) -> Void) {
         let bingSearchService = BingImageSearchService(subscriptionKey: "fbae700fb0af4546819c51f8585acf8a")
 
         bingSearchService.search(imagesNamed: "Charles in Charge") { (bingSearchResults) in
@@ -19,21 +19,44 @@ class CharlesInChargeService {
             }
 
             let imageDownloadService = ImageDownloadService()
+            imageDownloadService.deletePreviouslyDownloadedImages()
 
-//            let dispatchGroup = DispatchGroup()
+            let dispatchGroup = DispatchGroup()
 
+            var charlesInChargeImages = [CharlesImageResult]()
             bingSearchResults.forEach({ (searchResult) in
-//                dispatchGroup.enter()
+                dispatchGroup.enter()
 
                 imageDownloadService.download(imageUrl: searchResult.thumbnailUrl, completion: { (filename) in
-                    print("Downloaded \(filename)")
-//                    dispatchGroup.leave()
+                    defer {
+                        dispatchGroup.leave()
+                    }
+
+                    guard let filename = filename else {
+                        return
+                    }
+
+                    let thumbnailSize = CharlesImageResult.ThumbnailSize(width: searchResult.thumbnailSize.width, height: searchResult.thumbnailSize.height)
+                    let charlesImageResult = CharlesImageResult(thumbnailSize: thumbnailSize, thumbnailUrl: URL(fileURLWithPath: filename), title: searchResult.title)
+                    charlesInChargeImages.append(charlesImageResult)
                 })
             })
 
-//            dispatchGroup.wait()
+            let queue = DispatchQueue.main
+            dispatchGroup.notify(queue: queue) {
+                completion(charlesInChargeImages)
+            }
+        }
+    }
 
-//            completion(bingSearchResults)
+    struct CharlesImageResult {
+        let thumbnailSize: ThumbnailSize
+        let thumbnailUrl: URL
+        let title: String
+
+        struct ThumbnailSize {
+            public let width: Float
+            public let height: Float
         }
     }
 }

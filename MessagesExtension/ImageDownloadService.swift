@@ -39,16 +39,26 @@ class ImageDownloadService {
         Alamofire.download(url, to: destination)
             .validate()
             .responseData { response in
-                debugPrint("Downloaded image")
-                print(response)
-
-                if response.result.error == nil, let imagePath = response.destinationURL?.path {
-                    let image = UIImage(contentsOfFile: imagePath)
-                    completion(imagePath)
-                    return
+                guard response.result.isSuccess,
+                    let imagePath = response.destinationURL?.path else {
+                        completion(nil)
+                        return
                 }
 
-                completion(nil)
+                completion(imagePath)
         }
+    }
+
+    func deletePreviouslyDownloadedImages() {
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+        guard let contents = try? fileManager.contentsOfDirectory(atPath: documentsURL.path) else {
+            return
+        }
+
+        contents.forEach({ (item) in
+            try? fileManager.removeItem(atPath: documentsURL.appendingPathComponent(item).path)
+        })
     }
 }

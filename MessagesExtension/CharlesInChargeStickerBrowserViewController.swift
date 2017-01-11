@@ -17,7 +17,11 @@ class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewControlle
 
         let charlesInChargeService = CharlesInChargeService()
         charlesInChargeService.findAndDownloadImages { (searchResults) in
-            print(searchResults)
+            self.stickers = searchResults.flatMap({ (searchResult) -> MSSticker? in
+                return try? MSSticker(contentsOfFileURL: searchResult.thumbnailUrl, localizedDescription: searchResult.title)
+            })
+
+            self.stickerBrowserView.reloadData()
         }
     }
 
