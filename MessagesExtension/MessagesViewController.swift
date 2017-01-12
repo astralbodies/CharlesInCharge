@@ -10,6 +10,8 @@ import UIKit
 import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    
     var stickerBrowserViewController: CharlesInChargeStickerBrowserViewController!
     
     override func viewDidLoad() {
@@ -17,11 +19,12 @@ class MessagesViewController: MSMessagesAppViewController {
         // Do any additional setup after loading the view.
 
         stickerBrowserViewController = CharlesInChargeStickerBrowserViewController(stickerSize: .small)
+        stickerBrowserViewController.activityIndicatorViewDelegate = self
         stickerBrowserViewController.view.frame = self.view.frame
 
         addChildViewController(stickerBrowserViewController)
         stickerBrowserViewController.didMove(toParentViewController: self)
-        view.addSubview(stickerBrowserViewController.view)
+        view.insertSubview(stickerBrowserViewController.view, at: 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,4 +80,14 @@ class MessagesViewController: MSMessagesAppViewController {
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
 
+}
+
+extension MessagesViewController: ActivityIndicatorViewDelegate {
+    func startAnimating() {
+        activityIndicatorView.startAnimating()
+    }
+
+    func stopAnimating() {
+        activityIndicatorView.stopAnimating()
+    }
 }

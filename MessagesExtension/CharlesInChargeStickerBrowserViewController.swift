@@ -9,11 +9,17 @@
 import UIKit
 import Messages
 
+protocol ActivityIndicatorViewDelegate {
+    func startAnimating()
+    func stopAnimating()
+}
+
 class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewController {
     var stickers = [MSSticker]()
+    var activityIndicatorViewDelegate: ActivityIndicatorViewDelegate?
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         let charlesInChargeService = CharlesInChargeService()
         charlesInChargeService.findAndDownloadImages { (searchResults) in
@@ -21,8 +27,11 @@ class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewControlle
                 return try? MSSticker(contentsOfFileURL: searchResult.thumbnailUrl, localizedDescription: searchResult.title)
             })
 
+            self.activityIndicatorViewDelegate?.stopAnimating()
             self.stickerBrowserView.reloadData()
         }
+
+        activityIndicatorViewDelegate?.startAnimating()
     }
 
     override func numberOfStickers(in stickerBrowserView: MSStickerBrowserView) -> Int {
