@@ -1,44 +1,58 @@
-//
-//  CharlesInChargeStickerBrowserVC.swift
-//  CharlesInCharge
-//
-//  Created by Aaron Douglas on 1/8/17.
-//  Copyright © 2017 Automattic Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2017 Razeware LLC
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 import UIKit
 import Messages
 
 protocol ActivityIndicatorViewDelegate {
-    func startAnimating()
-    func stopAnimating()
+  func startAnimating()
+  func stopAnimating()
 }
 
 class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewController {
-    var stickers = [MSSticker]()
-    var activityIndicatorViewDelegate: ActivityIndicatorViewDelegate?
+  var stickers = [MSSticker]()
+  var activityIndicatorViewDelegate: ActivityIndicatorViewDelegate?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        let charlesInChargeService = CharlesInChargeService()
-        charlesInChargeService.findAndDownloadImages { (searchResults) in
-            self.stickers = searchResults.flatMap({ (searchResult) -> MSSticker? in
-                return try? MSSticker(contentsOfFileURL: searchResult.thumbnailUrl, localizedDescription: searchResult.title)
-            })
+    let charlesInChargeService = CharlesInChargeService()
+    charlesInChargeService.findAndDownloadImages { (searchResults) in
+      self.stickers = searchResults.flatMap({ (searchResult) -> MSSticker? in
+        return try? MSSticker(contentsOfFileURL: searchResult.thumbnailUrl, localizedDescription: searchResult.title)
+      })
 
-            self.activityIndicatorViewDelegate?.stopAnimating()
-            self.stickerBrowserView.reloadData()
-        }
-
-        activityIndicatorViewDelegate?.startAnimating()
+      self.activityIndicatorViewDelegate?.stopAnimating()
+      self.stickerBrowserView.reloadData()
     }
 
-    override func numberOfStickers(in stickerBrowserView: MSStickerBrowserView) -> Int {
-        return stickers.count
-    }
+    activityIndicatorViewDelegate?.startAnimating()
+  }
 
-    override func stickerBrowserView(_ stickerBrowserView: MSStickerBrowserView, stickerAt index: Int) -> MSSticker {
-        return stickers[index]
-    }
+  override func numberOfStickers(in stickerBrowserView: MSStickerBrowserView) -> Int {
+    return stickers.count
+  }
+
+  override func stickerBrowserView(_ stickerBrowserView: MSStickerBrowserView, stickerAt index: Int) -> MSSticker {
+    return stickers[index]
+  }
 }

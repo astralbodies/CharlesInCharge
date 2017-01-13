@@ -132,7 +132,9 @@
 				93B47E231E229F1100F4EBE1 /* Frameworks */,
 				93B47E161E229F1100F4EBE1 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		93B47E161E229F1100F4EBE1 /* Products */ = {
 			isa = PBXGroup;
