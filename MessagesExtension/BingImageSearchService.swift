@@ -46,9 +46,9 @@ class BingImageSearchService {
 
         let searchResults = searchResultHits.flatMap({ (hit) -> SearchResult? in
           guard let title = hit["name"] as? String,
-            let fullSizeUrlString = hit["contentUrl"] as? String,
+            let fullSizeUrlString = hit["contenturl"] as? String,
             let fullSizeUrl = URL(string: fullSizeUrlString),
-            let thumbnailUrlString = hit["thumbnailUrl"] as? String,
+            let thumbnailUrlString = hit["thumbnailurl"] as? String,
             let thumbnailUrl = URL(string: thumbnailUrlString),
             let thumbnailSizes = hit["thumbnail"] as? [String: Any],
             let thumbnailWidth = thumbnailSizes["width"] as? Float,
