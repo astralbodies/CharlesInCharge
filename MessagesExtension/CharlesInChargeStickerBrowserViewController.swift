@@ -29,7 +29,7 @@ protocol DownloadIndicatorDelegate {
 }
 
 class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewController {
-  var stickers = [MSSticker]()
+  var stickers: [MSSticker] = []
   var downloadDelegate: DownloadIndicatorDelegate?
 
   override func viewDidLoad() {

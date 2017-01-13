@@ -23,7 +23,7 @@
 import Foundation
 import Alamofire
 
-final class BingImageSearchService {
+class BingImageSearchService {
   let subscriptionKey: String
 
   init(subscriptionKey: String) {

@@ -33,7 +33,7 @@ class MessagesViewController: MSMessagesAppViewController {
 
     stickerBrowserViewController = CharlesInChargeStickerBrowserViewController(stickerSize: .small)
     stickerBrowserViewController.downloadDelegate = self
-    stickerBrowserViewController.view.frame = self.view.frame
+    stickerBrowserViewController.view.frame = view.frame
 
     addChildViewController(stickerBrowserViewController)
     stickerBrowserViewController.didMove(toParentViewController: self)
