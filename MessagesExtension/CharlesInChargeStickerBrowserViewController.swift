@@ -23,14 +23,14 @@
 import UIKit
 import Messages
 
-protocol ActivityIndicatorViewDelegate {
-  func startAnimating()
-  func stopAnimating()
+protocol DownloadIndicatorDelegate {
+  func viewControllerDidStartDownloading(_ viewController: UIViewController)
+  func viewControllerDidStopDownloading(_ viewController: UIViewController)
 }
 
 class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewController {
   var stickers = [MSSticker]()
-  var activityIndicatorViewDelegate: ActivityIndicatorViewDelegate?
+  var downloadDelegate: DownloadIndicatorDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,11 +41,11 @@ class CharlesInChargeStickerBrowserViewController: MSStickerBrowserViewControlle
         return try? MSSticker(contentsOfFileURL: searchResult.thumbnailUrl, localizedDescription: searchResult.title)
       })
 
-      self.activityIndicatorViewDelegate?.stopAnimating()
+      self.downloadDelegate?.viewControllerDidStopDownloading(self)
       self.stickerBrowserView.reloadData()
     }
 
-    activityIndicatorViewDelegate?.startAnimating()
+    downloadDelegate?.viewControllerDidStartDownloading(self)
   }
 
   override func numberOfStickers(in stickerBrowserView: MSStickerBrowserView) -> Int {
