@@ -33,7 +33,7 @@ final class BingImageSearchService {
   func search(imagesNamed query: String, completion: @escaping ([SearchResult]) -> Void) {
     Alamofire.request("https://api.cognitive.microsoft.com/bing/v5.0/images/search",
                       method: .get,
-                      parameters: ["q": query],
+                      parameters: ["q": query, "mkt": "en-US"],
                       headers: ["Ocp-Apim-Subscription-Key": subscriptionKey])
       .validate()
       .responseJSON { (response) in
