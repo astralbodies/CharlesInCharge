@@ -165,14 +165,14 @@
 		93B47E261E229F1100F4EBE1 /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
-				93B47E271E229F1100F4EBE1 /* MessagesViewController.swift */,
-				93B47E291E229F1100F4EBE1 /* MainInterface.storyboard */,
 				93B47E2C1E229F1100F4EBE1 /* Assets.xcassets */,
-				93B47E2E1E229F1100F4EBE1 /* Info.plist */,
-				93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift */,
 				93B47E3A1E22A2A800F4EBE1 /* BingImageSearchService.swift */,
-				93B47E561E22AB7E00F4EBE1 /* ImageDownloadService.swift */,
 				936F0E961E246C17006C24C0 /* CharlesInChargeService.swift */,
+				93B47E381E22A18600F4EBE1 /* CharlesInChargeStickerBrowserViewController.swift */,
+				93B47E561E22AB7E00F4EBE1 /* ImageDownloadService.swift */,
+				93B47E2E1E229F1100F4EBE1 /* Info.plist */,
+				93B47E291E229F1100F4EBE1 /* MainInterface.storyboard */,
+				93B47E271E229F1100F4EBE1 /* MessagesViewController.swift */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
