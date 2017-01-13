@@ -24,7 +24,7 @@ import Foundation
 
 class CharlesInChargeService {
   func findAndDownloadImages(completion: @escaping ([CharlesImageResult]) -> Void) {
-    let bingSearchService = BingImageSearchService(subscriptionKey: "ff9111f55f2c4454b1b4135533e1b3a0")
+    let bingSearchService = BingImageSearchService(subscriptionKey: "")
 
     bingSearchService.search(imagesNamed: "Charles in Charge") { (bingSearchResults) in
       guard bingSearchResults.count > 0 else {
